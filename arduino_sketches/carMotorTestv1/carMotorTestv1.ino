@@ -33,38 +33,69 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 
+//#ifndef Pins_Arduino_h
+//#define Pins_Arduino_h
+//
+//#include "../generic/common.h"
+//
+//#define PIN_WIRE_SDA (4)
+//#define PIN_WIRE_SCL (5)
+//
+//static const uint8_t SDA = PIN_WIRE_SDA;
+//static const uint8_t SCL = PIN_WIRE_SCL;
+//
+//static const uint8_t LED_BUILTIN = 2;//new ESP-12E GPIO2
+//static const uint8_t BUILTIN_LED = 2;//new ESP-12E GPIO2
+//
+//static const uint8_t D0   = 3;
+//static const uint8_t D1   = 1;
+//static const uint8_t D2   = 16;
+//static const uint8_t D3   = 5;
+//static const uint8_t D4   = 4;
+//static const uint8_t D5   = 14;
+//static const uint8_t D6   = 12;
+//static const uint8_t D7   = 13;
+//static const uint8_t D8   = 0;
+//static const uint8_t D9   = 2;
+//static const uint8_t D10  = 15;
+//static const uint8_t D11  = 13;
+//static const uint8_t D12  = 12;
+//static const uint8_t D13  = 14;
+//static const uint8_t D14  = 4;
+//static const uint8_t D15  = 5;
+
 const char *ssid = "ALPublic";
 const char *password = "listlover";
 
 int dirMotorA = 12;
-int speedMotorA = 3;
-int brakeMotorA = 9;
+int speedMotorA = 5;
+int brakeMotorA = 2;
 
-int dirMotorB = 13;
-int speedMotorB = 11;
-int brakeMotorB = 8;
+int dirMotorB = 14;
+int speedMotorB = 13;
+int brakeMotorB = 0;
 
 ESP8266WebServer server ( 81 );
 
 void handleRoot() {  
   if (server.arg("go") == "go")
   {
-    digitalWrite(3, HIGH);
-    analogWrite(3, 255);
-    //digitalWrite(dirMotorB, LOW);
+//    digitalWrite(5, HIGH);
+//    analogWrite(5, 255);
+    digitalWrite(dirMotorB, LOW);
     digitalWrite(LED_BUILTIN, HIGH);
-    //digitalWrite(brakeMotorB, LOW);
-    // analogWrite(speedMotorB, 255);
+    digitalWrite(brakeMotorB, HIGH);
+    digitalWrite(speedMotorB, 255);
     server.send(200, "text/html",  "<form action='/'><input type='submit' value='stop' name='stop'>testing</form>");
   }
   else
   {
-    digitalWrite(3, LOW);
-    analogWrite(3, 0);
-    //digitalWrite(dirMotorB, HIGH);
+//    digitalWrite(5, LOW);
+//    analogWrite(5, 0);
+    digitalWrite(dirMotorB, HIGH);
     digitalWrite(LED_BUILTIN, LOW);
-    //digitalWrite(brakeMotorB, HIGH);
-    //analogWrite(speedMotorB, 100);
+    digitalWrite(brakeMotorB, LOW);
+    digitalWrite(speedMotorB, 100);
     server.send(200, "text/html", "<form action='/'><input type='submit' value='go' name='go'></form>");
   }
 
@@ -90,10 +121,10 @@ void handleNotFound() {
 
 void setup ( void ) {
 
-  pinMode(3, OUTPUT);
+//  pinMode(5, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
-  // pinMode(dirMotorB, OUTPUT);
-  // pinMode(brakeMotorB, OUTPUT);
+   pinMode(dirMotorB, OUTPUT);
+   pinMode(brakeMotorB, OUTPUT);
   
   Serial.begin ( 9600 );
   WiFi.begin ( ssid, password );
