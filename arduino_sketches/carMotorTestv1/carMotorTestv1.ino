@@ -67,35 +67,41 @@
 const char *ssid = "ALPublic";
 const char *password = "listlover";
 
-int dirMotorA = 12;
-int speedMotorA = 5;
-int brakeMotorA = 2;
+//reverse
+int dirMotorA = 13;
+//int speedMotorA = 5;
+//int brakeMotorA = 2;
 
-int dirMotorB = 14;
-int speedMotorB = 13;
-int brakeMotorB = 0;
+//with dirMotorA and dirMotorB below it goes forward
+//Need to figure out the correct turning pin and go from there
+int dirMotorB = 12;
+//int speedMotorB = 13;
+//int brakeMotorB = 0;
 
 ESP8266WebServer server ( 81 );
 
-void handleRoot() {  
+void handleRoot() {
   if (server.arg("go") == "go")
   {
 //    digitalWrite(5, HIGH);
 //    analogWrite(5, 255);
-    digitalWrite(dirMotorB, LOW);
+    analogWrite(dirMotorA, 255);
+    digitalWrite(dirMotorB, HIGH);
+
     digitalWrite(LED_BUILTIN, HIGH);
-    digitalWrite(brakeMotorB, HIGH);
-    digitalWrite(speedMotorB, 255);
+//    digitalWrite(brakeMotorA, HIGH);
+//    digitalWrite(speedMotorA, -255);
     server.send(200, "text/html",  "<form action='/'><input type='submit' value='stop' name='stop'>testing</form>");
   }
   else
   {
 //    digitalWrite(5, LOW);
 //    analogWrite(5, 0);
-    digitalWrite(dirMotorB, HIGH);
+    analogWrite(dirMotorA, -100);
+    digitalWrite(dirMotorB, LOW);
     digitalWrite(LED_BUILTIN, LOW);
-    digitalWrite(brakeMotorB, LOW);
-    digitalWrite(speedMotorB, 100);
+//    digitalWrite(brakeMotorA, LOW);
+//    digitalWrite(speedMotorA, 100);
     server.send(200, "text/html", "<form action='/'><input type='submit' value='go' name='go'></form>");
   }
 
@@ -104,7 +110,7 @@ void handleRoot() {
 void handleNotFound() {
   //digitalWrite ( led, 1 );
   String message = "File Not Found\n\n";
-  message += "URI: "; 
+  message += "URI: ";
   message += server.uri();
   message += "\nMethod: ";
   message += ( server.method() == HTTP_GET ) ? "GET" : "POST";
@@ -123,9 +129,12 @@ void setup ( void ) {
 
 //  pinMode(5, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
+   pinMode(dirMotorA, OUTPUT);
    pinMode(dirMotorB, OUTPUT);
-   pinMode(brakeMotorB, OUTPUT);
-  
+
+//   pinMode(brakeMotorA, OUTPUT);
+//   pinMode(speedMotorA, OUTPUT);
+
   Serial.begin ( 9600 );
   WiFi.begin ( ssid, password );
   Serial.println ( "" );
