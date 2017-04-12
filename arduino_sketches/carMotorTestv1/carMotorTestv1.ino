@@ -84,7 +84,7 @@ void handleRoot() {
   if (server.arg("backward") == "backward")
   {
     digitalWrite(dirMotorA, LOW);
-    digitalWrite(speedMotorA, 120);
+    digitalWrite(speedMotorA, 255);
     digitalWrite(brakeMotorA, LOW);
 
     server.send(200, "text/html",  "<form action='/'><input type='submit' value='forward' name='forward'>testing</form><form action='/'><input type='submit' value='stop' name='stop'>testing</form>");
@@ -92,7 +92,7 @@ void handleRoot() {
   else if (server.arg("forward") == "forward")
   {
      digitalWrite(dirMotorA, HIGH);
-     digitalWrite(speedMotorA, 120);
+     digitalWrite(speedMotorA, 255);
      digitalWrite(brakeMotorA, LOW);
 
     server.send(200, "text/html", "<form action='/'><input type='submit' value='backward' name='backward'></form><form action='/'><input type='submit' value='stop' name='stop'>testing</form>");
