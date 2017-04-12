@@ -8,7 +8,7 @@ For more information see:
 https://www.instructables.com/id/Arduino-Motor-Shield-Tutorial/
 
 *************************************************************/
-#ifndef Pins_Arduino_h
+// #ifndef Pins_Arduino_h
 #define Pins_Arduino_h
 
 #include "../generic/common.h"

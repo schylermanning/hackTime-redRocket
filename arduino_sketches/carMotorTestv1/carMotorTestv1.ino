@@ -68,43 +68,43 @@ const char *ssid = "ALPublic";
 const char *password = "listlover";
 
 //reverse
-int dirMotorA = 13;
-//int speedMotorA = 5;
-//int brakeMotorA = 2;
+int dirMotorA = 12; //13
+int speedMotorA = 5;
+int brakeMotorA = 2;
 
 //with dirMotorA and dirMotorB below it goes forward
 //Need to figure out the correct turning pin and go from there
 int dirMotorB = 12;
-//int speedMotorB = 13;
-//int brakeMotorB = 0;
+int speedMotorB = 13;
+int brakeMotorB = 0;
 
 ESP8266WebServer server ( 81 );
 
 void handleRoot() {
-  if (server.arg("go") == "go")
+  if (server.arg("backward") == "backward")
   {
-//    digitalWrite(5, HIGH);
-//    analogWrite(5, 255);
-    analogWrite(dirMotorA, 255);
-    digitalWrite(dirMotorB, HIGH);
+    digitalWrite(dirMotorA, LOW);
+    digitalWrite(speedMotorA, 120);
+    digitalWrite(brakeMotorA, LOW);
 
-    digitalWrite(LED_BUILTIN, HIGH);
-//    digitalWrite(brakeMotorA, HIGH);
-//    digitalWrite(speedMotorA, -255);
-    server.send(200, "text/html",  "<form action='/'><input type='submit' value='stop' name='stop'>testing</form>");
+    server.send(200, "text/html",  "<form action='/'><input type='submit' value='forward' name='forward'>testing</form><form action='/'><input type='submit' value='stop' name='stop'>testing</form>");
   }
-  else
+  else if (server.arg("forward") == "forward")
   {
-//    digitalWrite(5, LOW);
-//    analogWrite(5, 0);
-    analogWrite(dirMotorA, -100);
-    digitalWrite(dirMotorB, LOW);
-    digitalWrite(LED_BUILTIN, LOW);
-//    digitalWrite(brakeMotorA, LOW);
-//    digitalWrite(speedMotorA, 100);
-    server.send(200, "text/html", "<form action='/'><input type='submit' value='go' name='go'></form>");
-  }
+     digitalWrite(dirMotorA, HIGH);
+     digitalWrite(speedMotorA, 120);
+     digitalWrite(brakeMotorA, LOW);
 
+    server.send(200, "text/html", "<form action='/'><input type='submit' value='backward' name='backward'></form><form action='/'><input type='submit' value='stop' name='stop'>testing</form>");
+  }
+  else if (server.arg("stop") == "stop")
+  {
+    digitalWrite(brakeMotorA, HIGH);
+    server.send(200, "text/html",  "<form action='/'><input type='submit' value='forward' name='forward'>testing</form><form action='/'><input type='submit' value='backward' name='backward'></form>");
+  }
+  else {
+    server.send(200, "text/html",  "<form action='/'><input type='submit' value='forward' name='forward'>testing</form><form action='/'><input type='submit' value='backward' name='backward'></form>");
+  }
 }
 
 void handleNotFound() {
@@ -128,12 +128,11 @@ void handleNotFound() {
 void setup ( void ) {
 
 //  pinMode(5, OUTPUT);
-  pinMode(LED_BUILTIN, OUTPUT);
+//  pinMode(LED_BUILTIN, OUTPUT);
+  
    pinMode(dirMotorA, OUTPUT);
-   pinMode(dirMotorB, OUTPUT);
-
-//   pinMode(brakeMotorA, OUTPUT);
-//   pinMode(speedMotorA, OUTPUT);
+   pinMode(brakeMotorA, OUTPUT);
+   pinMode(speedMotorA, OUTPUT);
 
   Serial.begin ( 9600 );
   WiFi.begin ( ssid, password );
