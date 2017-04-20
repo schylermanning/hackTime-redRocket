@@ -115,7 +115,7 @@ const char *controlForm =
 //String direction = server.arg("direction");
 
 void handleRoot() {
-  if (server.arg("direction") == "FL") {
+   if (server.arg("direction") == "FL") {
      digitalWrite(dirMotorA, HIGH);
      digitalWrite(brakeMotorA, LOW);
      digitalWrite(speedMotorA, 255);
