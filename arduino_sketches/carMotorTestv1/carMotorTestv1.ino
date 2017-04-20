@@ -115,54 +115,54 @@ const char *controlForm =
 //String direction = server.arg("direction");
 
 void handleRoot() {
-   if (server.arg("direction") == "FL") {
-     digitalWrite(dirMotorA, HIGH);
-     digitalWrite(brakeMotorA, LOW);
-     digitalWrite(speedMotorA, 255);
-     digitalWrite(dirMotorB, HIGH);
-     digitalWrite(brakeMotorB, LOW);
-     digitalWrite(speedMotorB, HIGH);
+  if (server.arg("direction") == "FL") {
+    digitalWrite(dirMotorA, HIGH);
+    digitalWrite(brakeMotorA, LOW);
+    digitalWrite(speedMotorA, 255);
+    digitalWrite(dirMotorB, HIGH);
+    digitalWrite(brakeMotorB, LOW);
+    digitalWrite(speedMotorB, HIGH);
   }
   else if (server.arg("direction") == "F") {
-     digitalWrite(dirMotorA, HIGH);
-     digitalWrite(brakeMotorA, LOW);
-     digitalWrite(speedMotorA, 255);
-     digitalWrite(dirMotorB, HIGH);
-     digitalWrite(brakeMotorB, HIGH);
+    digitalWrite(dirMotorA, HIGH);
+    digitalWrite(brakeMotorA, LOW);
+    digitalWrite(speedMotorA, 255);
+    digitalWrite(dirMotorB, HIGH);
+    digitalWrite(brakeMotorB, HIGH);
   }
   else if (server.arg("direction") == "FR") {
-     digitalWrite(dirMotorA, HIGH);
-     digitalWrite(brakeMotorA, LOW);
-     digitalWrite(speedMotorA, 255);
-     digitalWrite(dirMotorB, LOW);
-     digitalWrite(brakeMotorB, LOW);
-     digitalWrite(speedMotorB, HIGH);
+    digitalWrite(dirMotorA, HIGH);
+    digitalWrite(brakeMotorA, LOW);
+    digitalWrite(speedMotorA, 255);
+    digitalWrite(dirMotorB, LOW);
+    digitalWrite(brakeMotorB, LOW);
+    digitalWrite(speedMotorB, HIGH);
   }
   else if (server.arg("direction") == "BL") {
-      digitalWrite(dirMotorA, LOW);
-      digitalWrite(brakeMotorA, LOW);
-      digitalWrite(speedMotorA, 255);
-      digitalWrite(dirMotorB, HIGH);
-      digitalWrite(brakeMotorB, LOW);
-      digitalWrite(speedMotorB, HIGH);
+    digitalWrite(dirMotorA, LOW);
+    digitalWrite(brakeMotorA, LOW);
+    digitalWrite(speedMotorA, 255);
+    digitalWrite(dirMotorB, HIGH);
+    digitalWrite(brakeMotorB, LOW);
+    digitalWrite(speedMotorB, HIGH);
   }
   else if (server.arg("direction") == "B") {
-      digitalWrite(dirMotorA, LOW);
-      digitalWrite(brakeMotorA, LOW);
-      digitalWrite(speedMotorA, 255);
-      digitalWrite(dirMotorB, LOW);
-      digitalWrite(brakeMotorB, HIGH);
+    digitalWrite(dirMotorA, LOW);
+    digitalWrite(brakeMotorA, LOW);
+    digitalWrite(speedMotorA, 255);
+    digitalWrite(dirMotorB, LOW);
+    digitalWrite(brakeMotorB, HIGH);
   }
   else if (server.arg("direction") == "BR") {
-      digitalWrite(dirMotorA, LOW);
-      digitalWrite(brakeMotorA, LOW);
-      digitalWrite(speedMotorA, 255);
-      digitalWrite(dirMotorB, LOW);
-      digitalWrite(brakeMotorB, LOW);
-      digitalWrite(speedMotorB, HIGH);
+    digitalWrite(dirMotorA, LOW);
+    digitalWrite(brakeMotorA, LOW);
+    digitalWrite(speedMotorA, 255);
+    digitalWrite(dirMotorB, LOW);
+    digitalWrite(brakeMotorB, LOW);
+    digitalWrite(speedMotorB, HIGH);
   }
   else{
-      digitalWrite(brakeMotorA, HIGH);
+    digitalWrite(brakeMotorA, HIGH);
   }
   server.send(200, "text/html",  controlForm);
  }
