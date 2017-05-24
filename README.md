@@ -16,7 +16,7 @@ AND Install the Chinese FTDI drivers
 
 http://linksprite.com/wiki/index.php5?title=LinkNode_D1
 
-- Install Arduino from the Arduino website.
+- Install Arduino from the Arduino website. https://www.arduino.cc/en/Main/ArduinoMotorShieldR3
 - Start Arduino and open Preferences window.
 - Enter http://arduino.esp8266.com/stable/package_esp8266com_index.json into Additional Board Manager URLs field. You can add multiple URLs, separating them with commas.
 - Open Boards Manager from Tools > Board menu and install esp8266 platform
