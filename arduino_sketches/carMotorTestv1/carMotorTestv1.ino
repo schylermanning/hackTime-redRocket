@@ -182,7 +182,7 @@ void handleNotFound() {
 void setup ( void ) {
 
 
-//  pinMode(LED_BUILTIN, OUTPUT);
+   // pinMode(LED_BUILTIN, OUTPUT);
 
    pinMode(dirMotorA, OUTPUT);
    pinMode(brakeMotorA, OUTPUT);
@@ -190,7 +190,7 @@ void setup ( void ) {
    pinMode(dirMotorB, OUTPUT);
    pinMode(brakeMotorB, OUTPUT);
    pinMode(speedMotorB, OUTPUT);
-   pinMode(fireAll, OUTPUT);
+   // pinMode(fireAll, OUTPUT);
 
   Serial.begin ( 9600 );
   WiFi.begin ( ssid, password );
