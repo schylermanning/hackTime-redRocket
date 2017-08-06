@@ -33,20 +33,7 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 
-//#ifndef Pins_Arduino_h
-//#define Pins_Arduino_h
-//
-//#include "../generic/common.h"
-//
-//#define PIN_WIRE_SDA (4)
-//#define PIN_WIRE_SCL (5)
-//
-//static const uint8_t SDA = PIN_WIRE_SDA;
-//static const uint8_t SCL = PIN_WIRE_SCL;
-//
-//static const uint8_t LED_BUILTIN = 2;//new ESP-12E GPIO2
-//static const uint8_t BUILTIN_LED = 2;//new ESP-12E GPIO2
-//
+// map Arduino Motor Shield R3 to WeMo D1
 //static const uint8_t D0   = 3;
 //static const uint8_t D1   = 1;
 //static const uint8_t D2   = 16;
@@ -64,22 +51,23 @@
 //static const uint8_t D14  = 4;
 //static const uint8_t D15  = 5;
 
-const char *ssid = "ALPublic";
-const char *password = "listlover";
+const char *ssid = "WiFi SSID HERE";
+const char *password = "WiFi Password HERE";
 
-//reverse
-int dirMotorA = 12; //13
+// Controller A
+int dirMotorA = 12;
 int speedMotorA = 5;
 int brakeMotorA = 2;
 
-//with dirMotorA and dirMotorB below it goes forward
-//Need to figure out the correct turning pin and go from there
+// Controller B
 int dirMotorB = 14;
 int speedMotorB = 13;
 int brakeMotorB = 0;
 int fireAll = 4;
 
-ESP8266WebServer server ( 81 );
+// HTTP Port
+// (i) This might need changed with some firewalls.
+ESP8266WebServer server ( 80 );
 
 
 const char *controlForm =
@@ -190,7 +178,7 @@ void setup ( void ) {
    pinMode(dirMotorB, OUTPUT);
    pinMode(brakeMotorB, OUTPUT);
    pinMode(speedMotorB, OUTPUT);
-   // pinMode(fireAll, OUTPUT);
+   pinMode(fireAll, OUTPUT);
 
   Serial.begin ( 9600 );
   WiFi.begin ( ssid, password );

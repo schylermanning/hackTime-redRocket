@@ -1,32 +1,37 @@
-# Hacktime
-HackTime Don't Read Me!!!!!!!
+# hackTime - redRocket :rocket: :red_car:
 
-or
+## Problem:
+It is not possible to shoot team members with plastic darts while working remotely.  
 
-// notes for setup from Schyler Manning
+## Proposed Solution:
+Making a cheap 'off-the-shelf' red Ferrari RC car that can create a web interface over WiFi that allows it to be driven around and shoot out plastic rockets from any browser.
 
-++++++++++++++++++++++++++++++++++++++++++++++++
-Steps Used to Connect to Arduino via Serial:
-++++++++++++++++++++++++++++++++++++++++++++++++
-- Install FTDI drivers
-—- https://cdn.sparkfun.com/assets/learn_tutorials/7/4/FTDIUSBSerialDriver_v2_3.dmg
-AND Install the Chinese FTDI drivers
-- CH341SER_MAC
-—- http://www.wch.cn/download/CH341SER_MAC_ZIP.html ((note this may be blocked on local network))
+## Parts Required:
+1. Red Ferrari RC Car
+2. LinkSprite - LinkNode D1 (WeMo D1 - Based on ESP8266)
+3. Arduino Motor Shield R3
+4. Plastic Rocket Launcher with Rockets
 
-http://linksprite.com/wiki/index.php5?title=LinkNode_D1
+## Connect to Arduino via Serial:
 
-- Install Arduino from the Arduino website. https://www.arduino.cc/en/Main/ArduinoMotorShieldR3
-- Start Arduino and open Preferences window.
-- Enter http://arduino.esp8266.com/stable/package_esp8266com_index.json into Additional Board Manager URLs field. You can add multiple URLs, separating them with commas.
-- Open Boards Manager from Tools > Board menu and install esp8266 platform
-- Select the ( WeMos D1(Retired)) ESP8266 board from Tools > Board menu after installation.
-—- Because the LinkNode D1 has not been added into the offcial ESP8266 Arduino core repository yet, so you can't find LinkNode D1 board on the boards list, but you can use the WeMos D1(Retired), this board is fully compotiable with LinkNode D1.
-- Connect LinkNode D1 to your PC
-- Check your serial port which your PC recognize
-wch.cn
-CH341SER_MAC.ZIP下载页面-江苏沁恒股份有限公司
-江苏沁恒股份有限公司是技术主导型的高新技术企业，核心业务是接口类、SOC/MCU类集成电路及嵌入式软件的研发和销售，产品主要应用于物联网、金融税控、信息安全、工业控制等领域。 江苏沁恒股份有限公司是技术主导型的高新技术企业，核心业务是接口类、SOC/MCU类集成电路及嵌入式软件的研发和销售，产品主要应用于物联网、金融税控、信息安全、工业控制等领域
+* Install FTDI drivers
+    * [https://cdn.sparkfun.com/assets/learn_tutorials/7/4/FTDIUSBSerialDriver_v2_3.dmg](https://cdn.sparkfun.com/assets/learn_tutorials/7/4/FTDIUSBSerialDriver_v2_3.dmg)
 
-// if you have issues with the board manager make sure you copied in the correct path.
-http://arduino.esp8266.com/stable/package_esp8266com_index.json
+* Arduino IDE   
+    * Install the Arduino IDE from the Arduino website.
+        * [https://www.arduino.cc/en/Main/ArduinoMotorShieldR3](https://www.arduino.cc/en/Main/ArduinoMotorShieldR3)
+    * Start Arduino and open Preferences window.
+    * Add the following into into the Additional Board Manager URLs field:
+        * [http://arduino.esp8266.com/stable/package_esp8266com_index.json](http://arduino.esp8266.com/stable/package_esp8266com_index.json)
+    * Open Boards Manager from Tools > Board menu and install esp8266 platform.
+    * Select the ( WeMos D1(Retired)) ESP8266 board from Tools > Board menu after installation.
+    * Connect LinkNode D1 to your PC.
+    * Confirm the connection using the Serial Monitor.
+    * _See -> [http://linksprite.com/wiki/index.php5?title=LinkNode_D1](http://linksprite.com/wiki/index.php5?title=LinkNode_D1) for more details._
+
+
+## Steps Used to Connect to RedRocket via WiFi: 
+* Use Arduino Serial Monitor to see IP address it pulled from DHCP
+    * _e.g. 10.140.132.179_
+* Connect to IP on port 80
+    * http://10.140.132.179:80/

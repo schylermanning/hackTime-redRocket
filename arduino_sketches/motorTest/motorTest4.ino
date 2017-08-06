@@ -30,7 +30,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-//forward @ full speed
+  //forward @ full speed
   digitalWrite(brakeMotorA, LOW);   //Disengage the Brake for Channel A
   digitalWrite(dirMotorA, HIGH); //Establishes forward direction of Channel A
   analogWrite(speedMotorA, 127);   //Spins the motor on Channel A at full speed
