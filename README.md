@@ -1,7 +1,10 @@
 # hackTime - redRocket :rocket: :red_car:
 
 ## Problem:
-It is not possible to shoot team members with plastic darts while working remotely.  
+It is not possible to shoot team members with plastic darts while working remotely.
+
+![alt text](assets/redrocket.jpg "Rocket Launcher Car")
+![alt text](assets/redrocket2.png "Building redRocket")
 
 ## Proposed Solution:
 Making a cheap 'off-the-shelf' red Ferrari RC car that can create a web interface over WiFi that allows it to be driven around and shoot out plastic rockets from any browser.
