@@ -1,4 +1,4 @@
-# hackTime - redRocket :rocket: :red_car:
+# hackTime::redRocket :rocket: :red_car:
 
 ## Problem:
 It is not possible to shoot team members with plastic darts while working remotely.
